@@ -188,5 +188,7 @@ The input parameters are:
 - `R_auto`: numpy array.
             The frequency response <img src="https://render.githubusercontent.com/render/math?math=R_{II}"> for the interferometer.
             
--`R_12`: numpy array. The frequency response <img src="https://render.githubusercontent.com/render/math?math=R_{IJ}"> with <img src="https://render.githubusercontent.com/render/math?math=I<J"> for the interferometer.
+- `R_12`: numpy array. The frequency response <img src="https://render.githubusercontent.com/render/math?math=R_{IJ}"> with <img src="https://render.githubusercontent.com/render/math?math=I<J"> for the interferometer.
+
+
 
