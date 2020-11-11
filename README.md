@@ -58,32 +58,28 @@ be used to interpolate in logarithimc space.
 The `SGWB_Signal` class contains methods useful to compute the energy density of gravitational 
 waves for the single-field slow-roll and axion-SU(2) models described in 
 Section 2 of the paper.
-```python
-'''
-    Parameters
-    ----------
-    r_vac: float.
+ The input parameters are:   
+    - r_vac: float.
         Tensor-to-scalar ratio for quantum vacuum fluctuations (named simply r
         in the paper).
-    n_T: float (optional).
+   -  n_T: float (optional).
         Tensor spectral index. If None is calculated from the
         inflationary consistency relation.
-    r_star: float (optional).
+    - r_star: float (optional).
         Parameter of the axion-SU(2) spectrum (see Sec.2.2).        
-    k_p: float (optional).
+  -   k_p: float (optional).
         Parameter of the axion-SU(2) spectrum (see Sec.2.2).
-    sigma: float (optional).
+   -  sigma: float (optional).
         Parameter of the axion-SU(2) spectrum (see Sec.2.2).
-    axion: Boolean type (optional), defaults to None.
+   -  axion: Boolean type (optional), defaults to None.
         If True computes Omega_GW for the axion-SU(2) model, otherwise for the
         standard single-field slow-roll model.
-    k_star: float (optional).
+   - k_star: float (optional).
         Pivot scale of the tensor power spectrum. Default value 0.05.
-    running: Boolean type (optional).
+  -  running: Boolean type (optional).
         If True includes the running in the tensor power spectrum according to
         the inflatonary consistency relation (see Sec.2.1).
-        '''
-```
+
 
 
 ### The `files/` folder
