@@ -573,7 +573,7 @@ xerr_fgs, yerr_fgs, bins_mean_point_fgs, binned_signal_fgs, binned_curve_fgs = c
 
 ################################################################################
 
-# BBO with fgs
+# class for BBO with fgs
 
 class_BBO_fgs = Binned_GW(
                          name_exp='BBO_with_fgs',
@@ -661,7 +661,7 @@ class_DO_cons_fgs = Binned_GW(
                          interp=True,
                          n_det = 1.,
                          fgs=True,
-                         sigma_L=1e-3
+                         sigma_L=0.1
                          )
 
 xerr_DO_cons_fgs, yerr_DO_cons_fgs, bins_mean_point_DO_cons_fgs, binned_signal_DO_cons_fgs, binned_curve_DO_cons_fgs = class_DO_cons_fgs.sens_curve_binning()
