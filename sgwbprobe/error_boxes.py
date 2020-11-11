@@ -19,6 +19,8 @@ def make_error_boxes(ax, xdata, ydata, xerror, yerror, facecolor='r',
                      edgecolor='black', alpha=0.5, zorder=10):
     '''
     Function used to create the error bars on Figures 9-21 in the paper.
+    Heavily inspired by the matplotlib documentation at the link 
+    https://matplotlib.org/3.3.2/gallery/statistics/errorbars_and_boxes.html
     '''
     # Create list for all the error patches
     errorboxes = []
