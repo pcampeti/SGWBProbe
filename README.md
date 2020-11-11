@@ -44,6 +44,7 @@ Their content can be easily unpacked through a simple script
 LISA = np.load(op.join(op.dirname(__file__),'files/S_h_LISA_xcosmo.npz'))
 LISA_freq = LISA['x']
 LISA_strain = LISA['y']
+
 ```
 and used in your own Python code.
 
@@ -51,6 +52,7 @@ The folder `files/Responses/` contains the response function as a function of fr
 ```python
 Resp_LISA = np.load(op.join(op.dirname(__file__),'files/Responses/Resp_LISA.npy'))
 freq_LISA = np.load(op.join(op.dirname(__file__),'files/Responses/f_R_LISA.npy'))
+
 ```
 and used in your own Python code.
 
