@@ -59,6 +59,7 @@ The `SGWB_Signal` class contains methods useful to compute the energy density of
 waves for the single-field slow-roll and axion-SU(2) models described in 
 Section 2 of the paper.
 ```python
+'''
     Parameters
     ----------
     r_vac: float.
@@ -81,6 +82,7 @@ Section 2 of the paper.
     running: Boolean type (optional).
         If True includes the running in the tensor power spectrum according to
         the inflatonary consistency relation (see Sec.2.1).
+        '''
 ```
 
 
