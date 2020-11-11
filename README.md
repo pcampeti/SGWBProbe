@@ -61,6 +61,31 @@ The error bars for CMB experiments are computed using a Fisher matrix approach. 
 The name of each file contains the binning width and the specific power spectrum model used to compute them (e.g. the file `Fisher_1.3_r0.npy` contains the Fisher matrix for a binning width <img src="https://render.githubusercontent.com/render/math?math=\Delta\ln k = 1.3"> for the single-field slow-roll model with <img src="https://render.githubusercontent.com/render/math?math=\r=0">).
 
 ### Example of usage
+We first need to load and unpack the instrumental strain sensivity curves as a function of frequency, e.g. for LISA
+```python
+LISA = np.load(op.join(op.dirname(__file__),'files/S_h_LISA_xcosmo.npz'))
+LISA_freq = LISA['x']
+LISA_strain = LISA['y']
+
+```
+We then choose a value for the data-taking efficiency and mission observation time for the experiment, 
+```python
+eff_LISA = 0.75
+LISA_T_obs = 4 * year_sec * eff_LISA
+
+```
+We then create an instance of the `Signal_GW` class in order to generate the primordial signal <img src="https://render.githubusercontent.com/render/math?math=\Omega_{GW} h^2"> we are interested in, e.g. from an axion-SU(2) with the following parameters (called AX1 model in the paper)
+```python
+class_axion1 = Signal_GW(r_vac=1e-5, r_star=400, k_p=1e13, sigma=8.1, axion=True, running=True)
+
+```
+We then choose the wavenumber range over which we want to plot the spectrum of GWs, e.g. <img src="https://render.githubusercontent.com/render/math?math=10^{-5} - 10^{20}\,Mpc^{-1}">  
+```python
+k = np.logspace(np.log10(1e-5), np.log10(1e20), 100000)
+```
+We then 
+
+
 
 
 ### The `sgwbprobe` package
