@@ -72,12 +72,12 @@ Section 2 of the paper.
         
  - `sigma`: float (optional). Parameter of the axion-SU(2) spectrum (see Sec.2.2).
         
- - `axion`: Boolean (optional), defaults to None. If True computes Omega_GW for the axion-SU(2) model, otherwise for the
+ - `axion`: Boolean (optional), defaults to `None`. If `True` computes Omega_GW for the axion-SU(2) model, otherwise for the
         standard single-field slow-roll model.
         
  - `k_star`: float (optional). Pivot scale of the tensor power spectrum. Default value 0.05.
         
- - `running`: Boolean type (optional). If True includes the running in the tensor power spectrum according to
+ - `running`: Boolean (optional). If `True` includes the running in the tensor power spectrum according to
         the inflatonary consistency relation (see Sec.2.1).
 
 #### The `Binned_GW` class
@@ -95,7 +95,7 @@ The input parameters are:
             
 - `N_bins`: integer.
             Number of bins in which the signal is binned along the whole k 
-            range, only for plotting purposes. N_bins=80 is usually enough to
+            range, only for plotting purposes. `N_bins=80` is usually enough to
             cover the range from 10^-18 to 10^4 Hz, you should increase it if
             the you are using smaller bins or decrease it for larger bins.
             
@@ -125,35 +125,35 @@ The input parameters are:
 - `sens_curve`: numpy  array. 
             The experiment instrumental strain sensitivity S_h from Eq.(4.13). 
             
-- `CMB`: Boolean type (optional). 
-            True if we are computing a CMB sensitivity curve, False otherwise.
+- `CMB`: Boolean (optional). 
+            `True` if we are computing a CMB sensitivity curve, `False` otherwise.
             
 - `F`: numpy ndarray with shape (N_bins_sens, N_bins_sens) (optional). 
             The CMB sensitivity Fisher matrix (optional, necessary only if we 
             want to compute the sensitivity for a CMB experiment).
             
 - `A_S`: float (optional).
-            Amplitude of the scalar perturbations spectrum, default to 
-            A_S=2.1e-9.
+            Amplitude of the scalar perturbations spectrum, defaults to 
+            2.1e-9.
             
-- `interp`: Boolean type (optional). 
-            True if you want to interpolate along the instrument bandwidth the 
+- `interp`: Boolean (optional). 
+            `True` if you want to interpolate along the instrument bandwidth the 
             input instrumental strain sensitivity 
-            curve (sens_curve).
+            curve (`sens_curve`).
             
 - `n_det` : integer. 
             Number of detectors in the cross-correlation for interferometers 
-            (see Eq.(4.10)), default to n_det=1.
+            (see Eq.(4.10)), defaults to 1.
             
-- `fgs`: Boolean type (optional). 
-            True if you want error bars including foregrounds residuals.
+- `fgs`: Boolean (optional). 
+            `True` if you want error bars including foregrounds residuals.
             
 - `sigma_L`: float. 
             Fractional uncertainty on the amplitude of the BBH+BNS foreground 
             given by an external experiment (see Sec.4.2.2).
             
-- `cosmic_var`: Boolean type (optional). 
-            True if you want to include the cosmic variance in the 
+- `cosmic_var`: Boolean (optional). 
+            `True` if you want to include the cosmic variance in the 
             interferometer SNR (see Ref.[5]).
             
 - `f_R`: numpy array (optional).
@@ -161,10 +161,10 @@ The input parameters are:
             also the cosmic variance for the interferometers. 
             
 - `R_auto`: numpy array.
-            The frequency response R_II for the interferometer.
+            The frequency response <img src="https://render.githubusercontent.com/render/math?math=R_{II}"> for the interferometer.
             
 -`R_12`: numpy array. 
-            The frequency response R_IJ with I/=J for the interferometer.
+            The frequency response <img src="https://render.githubusercontent.com/render/math?math=R_{IJ}"> with <img src="https://render.githubusercontent.com/render/math?math=I<J"> for the interferometer.
 
 ### The `files/` folder
 The strain sensitivity curves as a function of frequency for the experiments used in the paper are included in the folder `files/` in `.npz` format.
