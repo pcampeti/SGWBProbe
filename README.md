@@ -1,10 +1,18 @@
 ## Stochastic Gravitational Wave Background Probes combination (SGWBProbe)
 
 This package, accompanying the paper Campeti, Komatsu, Poletti & Baccigalupi 2020 (https://arxiv.org/abs/2007.04241), allows to compute the binned sensitivity curves and error bars on the fractional
-energy density of gravitational waves in the Universe at the present time, <img src="https://render.githubusercontent.com/render/math?math=\Omega_{GW} h^2">, as a function of frequency for a wide selection of experiments, including at the moment:
-- LISA
-- 
-two representative classes
+energy density of gravitational waves in the Universe at the present time, <img src="https://render.githubusercontent.com/render/math?math=\Omega_{GW} h^2">, as a function of frequency for a wide selection of experiments, including CMB B-mode experiments, laser and atomic interferometers and Pulsar Timing Arrays (PTA).  The list of available experiments currently includes:
+- LiteBIRD 
+- Laser Interferometer Space Antenna (LISA)
+- Einstein Telescope (ET)
+- Square Kilometer Array (SKA)
+- Big Bang Observer (BBO)
+- Deci-hertz Interferometer Gravitational wave Observatory (DECIGO)
+- <img src="https://render.githubusercontent.com/render/math?math=\mu">Ares
+- Decihertz Observatory (DO),
+- Atomic Experiment for Dark Matter and Gravity Exploration in Space (AEDGE)
+
+The two representative classes
 of models for the stochastic background of primordial GW: the quantum vacuum fluctuation
 in the metric from single-field slow-roll inflation, and the source-induced tensor perturbation
 from the spectator axion-SU(2) inflation models. 
