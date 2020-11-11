@@ -37,8 +37,8 @@ where the name of each script indicates the respective number of the figures in 
 The figures produced by these scripts are collected in the folder `figures/`
 
 
-### The `files/` folder
-The strain sensitivity curves as a function of frequency for the experiments used in the paper are included in the folder `files/` in `.npz` format.
+### Available sensitivity curves and response functions
+The strain sensitivity curves as a function of frequency for the experiments used in the paper are included in the `files/` folder in `.npz` format.
 Their content can be easily unpacked through a simple script 
 ```python
 LISA = np.load(op.join(op.dirname(__file__),'files/S_h_LISA_xcosmo.npz'))
