@@ -36,6 +36,29 @@ We provide python scripts that can be used to quickly reproduce each the figures
 where the name of each script indicates the respective number of the figures in the paper.
 The figures produced by these scripts are collected in the folder `figures/`
 
+
+### The `files/` folder
+The strain sensitivity curves as a function of frequency for the experiments used in the paper are included in the folder `files/` in `.npz` format.
+Their content can be easily unpacked through a simple script 
+```python
+LISA = np.load(op.join(op.dirname(__file__),'files/S_h_LISA_xcosmo.npz'))
+LISA_freq = LISA['x']
+LISA_strain = LISA['y']
+```
+and used in your own Python code.
+
+The folder `files/Responses/` contains the response function as a function of frequency in `.npy` format for the laser interferometers computed as described in Appendix A of the paper. Their content can be easily unpacked through a simple script, e.g for the LISA experiment
+```python
+Resp_LISA = np.load(op.join(op.dirname(__file__),'files/Responses/Resp_LISA.npy'))
+freq_LISA = np.load(op.join(op.dirname(__file__),'files/Responses/f_R_LISA.npy'))
+```
+and used in your own Python code.
+
+
+The error bars for CMB experiments are computed using a Fisher matrix approach. The Fisher matrices (computed as described in Section 3 of the paper) are gathered in the folder `files/LiteBIRD_Fisher_matrices/`. 
+The name of each file contains the binning width and the specific power spectrum model used to compute them (e.g. the file `Fisher_1.3_r0.npy` contains the Fisher matrix for a binning width <img src="https://render.githubusercontent.com/render/math?math=\Delta\ln k = 1.3"> for the single-field slow-roll model with <img src="https://render.githubusercontent.com/render/math?math=\r=0">).
+
+
 ### The `sgwbprobe` package
 The `sgwbprobe` package provided here contains the modules
 - `SGWB_Signal.py` containing the class `Signal_GW` needed to compute the energy density 
@@ -165,18 +188,4 @@ The input parameters are:
             
 -`R_12`: numpy array. 
             The frequency response <img src="https://render.githubusercontent.com/render/math?math=R_{IJ}"> with <img src="https://render.githubusercontent.com/render/math?math=I<J"> for the interferometer.
-
-### The `files/` folder
-The strain sensitivity curves as a function of frequency for the experiments used in the paper are included in the folder `files/` in `.npz` format.
-Their content can be easily unpacked through a simple script 
-```python
-ET = np.load(op.join(op.dirname(__file__),'files/S_h_ET.npz'))
-ET_freq = ET['x']
-ET_strain = ET['y']
-```
-and used in your Python code.
-
-The error bars for CMB experiments are computed using a Fisher matrix approach. The Fisher matrices (computed as described in Section 3 of the paper) are gathered in the folder `files/LiteBIRD_Fisher_matrices/`. 
-The name of each file contains the binning width and the specific power spectrum model used to compute them (e.g. the file `Fisher_1.3_r0.npy` contains the Fisher matrix for a binning width <img src="https://render.githubusercontent.com/render/math?math=\Delta\ln k = 1.3"> for the single-field slow-roll model with <img src="https://render.githubusercontent.com/render/math?math=\r=0">).
-
 
