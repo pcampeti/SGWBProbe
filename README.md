@@ -39,7 +39,7 @@ The figures produced by these scripts are collected in the folder `figures/`
 
 ### Available sensitivity curves and response functions
 The strain sensitivity curves as a function of frequency for the experiments used in the paper are included in the `files/` folder in `.npz` format.
-Their content can be easily unpacked through a simple script 
+Their content can be easily unpacked through a simple script, e.g for the LISA experiment 
 ```python
 LISA = np.load(op.join(op.dirname(__file__),'files/S_h_LISA_xcosmo.npz'))
 LISA_freq = LISA['x']
@@ -59,6 +59,8 @@ and used in your own Python code.
 
 The error bars for CMB experiments are computed using a Fisher matrix approach. The Fisher matrices (computed as described in Section 3 of the paper) are gathered in the folder `files/LiteBIRD_Fisher_matrices/`. 
 The name of each file contains the binning width and the specific power spectrum model used to compute them (e.g. the file `Fisher_1.3_r0.npy` contains the Fisher matrix for a binning width <img src="https://render.githubusercontent.com/render/math?math=\Delta\ln k = 1.3"> for the single-field slow-roll model with <img src="https://render.githubusercontent.com/render/math?math=\r=0">).
+
+### Example of usage
 
 
 ### The `sgwbprobe` package
