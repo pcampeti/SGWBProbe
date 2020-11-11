@@ -17,9 +17,9 @@ import matplotlib.pyplot as plt
 import matplotlib.colors as colors
 import seaborn as sns
 # import our classes and methods
-from sgwbprobecomb.SGWB_Signal import Signal_GW
-from sgwbprobecomb.Binned_errors import Binned_GW
-from sgwbprobecomb.error_boxes import make_error_boxes
+from sgwbprobe.SGWB_Signal import Signal_GW
+from sgwbprobe.Binned_errors import Binned_GW
+from sgwbprobe.error_boxes import make_error_boxes
 
 #seaborn settings
 sns.set()

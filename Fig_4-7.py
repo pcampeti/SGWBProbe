@@ -17,7 +17,7 @@ warnings.filterwarnings("ignore")
 import matplotlib as mpl
 import seaborn as sns
 # import our methods 
-from sgwbprobecomb.foregrounds import GWD_fg, EGWD_fg, BBH_BNS_fg, MBHB_fg
+from sgwbprobe.foregrounds import GWD_fg, EGWD_fg, BBH_BNS_fg, MBHB_fg
 
 
 # seaborn settings

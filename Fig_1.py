@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 import matplotlib.colors as colors
 import seaborn as sns
 # import our methods
-from sgwbprobecomb.SGWB_Signal import Signal_GW
+from sgwbprobe.SGWB_Signal import Signal_GW
 
 # seaborn settings 
 sns.set()
