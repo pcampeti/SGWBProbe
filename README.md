@@ -191,7 +191,7 @@ The input parameters are:
 - `R_12`: numpy array. The frequency response <img src="https://render.githubusercontent.com/render/math?math=R_{IJ}"> with <img src="https://render.githubusercontent.com/render/math?math=I<J"> for the interferometer.
 
 
-### Example of usage
+### Example of usage: binned error bars plots
 We first need to load and unpack the instrumental strain sensivity curves as a function of frequency, e.g. for LISA
 ```python
 LISA = np.load(op.join(op.dirname(__file__),'files/S_h_LISA_xcosmo.npz'))
@@ -279,8 +279,6 @@ xerr_fgs, yerr_fgs, bins_mean_point_fgs, binned_signal_fgs, binned_curve_fgs = c
 ```
 Finally we can plot on the same figure the binned signal,
 ```python
-fig = plt.figure()
-ax = plt.gca()
 plt.loglog(np.array(binned_signal_x)/6.5e14, binned_signal_y, color='blue',label=r'Axion Signal $r_{\star}=400$, $k_{p}=10^{15}$ $Mpc^{-1}$, $\sigma=9.1$',linewidth=1.0, zorder=18)
 
 ```
@@ -293,5 +291,36 @@ and the error bars including foreground residuals
 _ = make_error_boxes(ax, np.array(bins_mean_point_fgs)/6.5e14, binned_signal_fgs, xerr_fgs/6.5e14, yerr_fgs, facecolor='b', alpha=0.4, zorder=9)
 
 ```
+Similarly, we can obtain error bars for CMB experiments: in this case the class `Binned_GW` needs to be instantiated with the appropriate Fisher matrix and the tensor power spectrum obtained from the `total_spect` method of the `Signal_GW` class
+```python
+Fisher_axion = np.load(op.join(op.dirname(__file__),'files/LiteBIRD_Fisher_matrices/Fisher_1.2_AX1.npy'))  
+power_spectrum_axion = class_axion1.total_spect(k)
 
+class_binned_axion_CMB = Binned_GW(
+                         name_exp = 'LiteBIRD',
+                         kmin=1e-4,
+                         k=k,
+                         N_bins=80,
+                         delta_log_k=1.2,
+                         omega_gw=omega_gw,
+                         kmin_sens=1e-4,
+                         N_bins_sens=6,
+                         CMB=True,
+                         F=Fisher_axion,
+                         tensor_spect=power_spectrum_axion,
+                         sigma_L=1.0
+                         )                 
+                      
+xerr_axion, yerr_axion, bins_mean_point_axion, binned_signal_axion, binned_curve_axion = class_binned_axion_CMB.sens_curve_binning()
+
+```
+
+### Example of usage: binned sensitivity curves
+A completely similar procedure can be used to generate binned sensitivity curves as in Fig.8 in our paper. In this case we will just use the binned <img src="https://render.githubusercontent.com/render/math?math=\Omega_{GW} h^2"> sensitivity curve also given by the `sens_curve_binning` method:
+```python
+ax.loglog(np.array(bins_mean_point)/6.5e14, binned_curve[:len(bins_mean_point)], label='LISA w/o fgs', linewidth='1.5', color=sns.xkcd_rgb["black"], linestyle='--')
+
+ax.loglog(np.array(bins_mean_point_fgs)/6.5e14, binned_curve_fgs[:len(bins_mean_point_fgs)], label='LISA w/ fgs', linestyle='-', linewidth='1.5', color=sns.xkcd_rgb["black"])
+
+```
 
