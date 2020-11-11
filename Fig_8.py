@@ -3,10 +3,14 @@
 """
 Created on Mon Feb 10 17:31:56 2020
 
-@author: paolo
-Final plot of GW sensitivity curves
+@author: Paolo Campeti
+
+This script reproduces Figure 8 in the paper. 
+Uses methods imported from module sgwbprobecomb/SGWB_Signal.py and 
+sgwbprobecomb/Binned_errors.py.
 
 """
+import os.path as op
 import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
@@ -37,7 +41,7 @@ year_sec = 60*60*24*365
 # Load and unpack PTA and Interferometers instrumental strains
 
 # SKA
-SKA_file = np.load('/home/paolo/Codes/SGWBProbeComb/files/hc_SKA.npz')
+SKA_file = np.load(op.join(op.dirname(__file__), 'files/hc_SKA.npz'))
 SKA_freq = SKA_file['x']
 SKA_hc = SKA_file['y']
 SKA_strain = SKA_hc**2/SKA_freq
@@ -46,14 +50,14 @@ SKA_T_obs = 10 * year_sec * eff_SKA
 
 
 # Einstein Telescope
-ET = np.load('/home/paolo/Codes/SGWBProbeComb/files/S_h_ET.npz')
+ET = np.load(op.join(op.dirname(__file__),'files/S_h_ET.npz'))
 ET_freq = ET['x']
 ET_strain = ET['y']
 eff_ET = 1. # mission efficiency factor
 ET_T_obs = 1 * year_sec * eff_ET
 
 # Advanced LIGO
-aLIGO = np.load('/home/paolo/Codes/SGWBProbeComb/files/S_h_aLIGO.npz')
+aLIGO = np.load(op.join(op.dirname(__file__),'files/S_h_aLIGO.npz'))
 aLIGO_freq = aLIGO['x']
 aLIGO_strain = aLIGO['y']
 eff_aLIGO = 1. # mission efficiency factor
@@ -61,7 +65,7 @@ aLIGO_T_obs = 4 * year_sec * eff_aLIGO
 
 
 # LISA 
-LISA_xcosmo = np.load('/home/paolo/Codes/SGWBProbeComb/files/S_h_LISA_xcosmo.npz')
+LISA_xcosmo = np.load(op.join(op.dirname(__file__),'files/S_h_LISA_xcosmo.npz'))
 LISA_xcosmo_freq = LISA_xcosmo['x']
 LISA_xcosmo_strain = LISA_xcosmo['y']
 eff_LISA = 0.75
@@ -69,7 +73,7 @@ LISA_xcosmo_T_obs = 4 * year_sec * eff_LISA
 
 
 # muAres without fgs
-Ares_nofgs = np.load('/home/paolo/Codes/SGWBProbeComb/files/S_h_muAres_nofgs.npz')
+Ares_nofgs = np.load(op.join(op.dirname(__file__),'files/S_h_muAres_nofgs.npz'))
 Ares_nofgs_freq = Ares_nofgs['x']
 Ares_nofgs_strain = Ares_nofgs['y']
 eff_Ares = 1.
@@ -77,7 +81,7 @@ Ares_nofgs_T_obs = 10 * year_sec * eff_Ares
 
 
 # BBO STAR
-BBO_STAR = np.load('/home/paolo/Codes/SGWBProbeComb/files/S_h_BBO_STAR.npz')
+BBO_STAR = np.load(op.join(op.dirname(__file__),'files/S_h_BBO_STAR.npz'))
 BBO_STAR_freq = BBO_STAR['x']
 BBO_STAR_strain = BBO_STAR['y']
 eff_BBO = 1.
@@ -85,7 +89,7 @@ BBO_STAR_T_obs = 10 * year_sec * eff_BBO
 
 
 # DECIGO
-DECIGO = np.load('/home/paolo/Codes/SGWBProbeComb/files/S_h_DECIGO.npz')
+DECIGO = np.load(op.join(op.dirname(__file__),'files/S_h_DECIGO.npz'))
 DECIGO_freq = DECIGO['x']
 DECIGO_strain = DECIGO['y']
 eff_DECIGO = 1.
@@ -93,7 +97,7 @@ DECIGO_T_obs = 10 * year_sec * eff_DECIGO
 
 
 # DO Optimal
-DO = np.load('/home/paolo/Codes/SGWBProbeComb/files/S_h_DO_Optimal.npz')
+DO = np.load(op.join(op.dirname(__file__),'files/S_h_DO_Optimal.npz'))
 DO_freq = DO['x']
 DO_strain = DO['y']
 eff_DO = 0.75
@@ -101,14 +105,14 @@ DO_T_obs = 4 * year_sec * eff_DO
 
 
 # DO Conservative
-DO_cons = np.load('/home/paolo/Codes/SGWBProbeComb/files/S_h_DO_Conservative.npz')
+DO_cons = np.load(op.join(op.dirname(__file__),'files/S_h_DO_Conservative.npz'))
 DO_cons_freq = DO_cons['x']
 DO_cons_strain = DO_cons['y']
 eff_DO = 0.75
 DO_cons_T_obs = 4 * year_sec * eff_DO
 
 # AEDGE
-AEDGE = np.load('/home/paolo/Codes/SGWBProbeComb/files/S_h_AEDGE.npz')
+AEDGE = np.load(op.join(op.dirname(__file__),'files/S_h_AEDGE.npz'))
 AEDGE_freq = AEDGE['x']
 AEDGE_strain = AEDGE['y']
 eff_AEDGE = 0.6
@@ -281,7 +285,7 @@ xerr_BBO, yerr_BBO, bins_mean_point_BBO, binned_signal_BBO, binned_curve_BBO = c
 ###############################################################################
 #class for LiteBIRD and r=0
 
-Fisher = np.load('/home/paolo/Codes/SGWBProbeComb/files/LiteBIRD_Fisher_matrices/Fisher_1.3_0.0.npy')  
+Fisher = np.load(op.join(op.dirname(__file__),'files/LiteBIRD_Fisher_matrices/Fisher_1.3_r0.npy'))  
 omega_gw_flat_r0001 = class_no_axion_r0001.analytic_omega_WK(k)
 power_spectrum_r0001 = class_no_axion_r0001.tensor_spect(k)
 
@@ -635,5 +639,5 @@ plt.xlabel(r'f $[Hz]$',fontsize = 10.0)
 plt.ylabel(r'$h^{2} \Omega_{GW}$',fontsize = 10.0)
 plt.tick_params(axis = 'both',which = 'major', labelsize = 10.0)
 ax.legend(fontsize=8, bbox_to_anchor=(1, 1.0))
-plt.savefig('/home/paolo/Codes/SGWBProbeComb/figures/Fig_8.pdf', format='pdf', dpi=1000, bbox_inches='tight')
+plt.savefig(op.join(op.dirname(__file__),'figures/Fig_8.pdf'), format='pdf', dpi=1000, bbox_inches='tight')
 plt.show()

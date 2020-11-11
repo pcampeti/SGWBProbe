@@ -3,10 +3,14 @@
 """
 Created on Mon Feb 10 17:31:56 2020
 
-@author: paolo
-Final plot of GW sensitivity curves
+@author: Paolo Campeti
+
+This script reproduces Figure 21 in the paper. 
+Uses methods imported from module sgwbprobecomb/SGWB_Signal.py, 
+sgwbprobecomb/Binned_errors.py. and sgwbprobecomb/error_boxes.py.
 
 """
+import os.path as op
 import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
@@ -39,14 +43,14 @@ year_sec = 60*60*24*365
 # Load and unpack PTA and Interferometers instrumental strains
 
 # Einstein Telescope
-ET = np.load('/home/paolo/Codes/SGWBProbeComb/files/S_h_ET.npz')
+ET = np.load(op.join(op.dirname(__file__),'files/S_h_ET.npz'))
 ET_freq = ET['x']
 ET_strain = ET['y']
 eff_ET = 1. # mission efficiency factor
 ET_T_obs = 1 * year_sec * eff_ET
 
 # LISA for Cosmologists
-LISA_xcosmo = np.load('/home/paolo/Codes/SGWBProbeComb/files/S_h_LISA_xcosmo.npz')
+LISA_xcosmo = np.load(op.join(op.dirname(__file__),'files/S_h_LISA_xcosmo.npz'))
 LISA_xcosmo_freq = LISA_xcosmo['x']
 LISA_xcosmo_strain = LISA_xcosmo['y']
 eff_LISA = 0.75
@@ -54,7 +58,7 @@ LISA_xcosmo_T_obs = 4 * year_sec * eff_LISA
 
 
 # muAres without fgs
-Ares_nofgs = np.load('/home/paolo/Codes/SGWBProbeComb/files/S_h_muAres_nofgs.npz')
+Ares_nofgs = np.load(op.join(op.dirname(__file__),'files/S_h_muAres_nofgs.npz'))
 Ares_nofgs_freq = Ares_nofgs['x']
 Ares_nofgs_strain = Ares_nofgs['y']
 eff_Ares = 1.
@@ -62,7 +66,7 @@ Ares_nofgs_T_obs = 10 * year_sec * eff_Ares
 
 
 # BBO STAR
-BBO_STAR = np.load('/home/paolo/Codes/SGWBProbeComb/files/S_h_BBO_STAR.npz')
+BBO_STAR = np.load(op.join(op.dirname(__file__),'files/S_h_BBO_STAR.npz'))
 BBO_STAR_freq = BBO_STAR['x']
 BBO_STAR_strain = BBO_STAR['y']
 eff_BBO = 1.
@@ -70,7 +74,7 @@ BBO_STAR_T_obs = 10 * year_sec * eff_BBO
 
 
 # DECIGO
-DECIGO = np.load('/home/paolo/Codes/SGWBProbeComb/files/S_h_DECIGO.npz')
+DECIGO = np.load(op.join(op.dirname(__file__),'files/S_h_DECIGO.npz'))
 DECIGO_freq = DECIGO['x']
 DECIGO_strain = DECIGO['y']
 eff_DECIGO = 1.
@@ -78,7 +82,7 @@ DECIGO_T_obs = 10 * year_sec * eff_DECIGO
 
 
 # DO Optimal
-DO = np.load('/home/paolo/Codes/SGWBProbeComb/files/S_h_DO_Optimal.npz')
+DO = np.load(op.join(op.dirname(__file__),'files/S_h_DO_Optimal.npz'))
 DO_freq = DO['x']
 DO_strain = DO['y']
 eff_DO = 0.75
@@ -86,7 +90,7 @@ DO_T_obs = 4 * year_sec * eff_DO
 
 
 # DO Conservative
-DO_cons = np.load('/home/paolo/Codes/SGWBProbeComb/files/S_h_DO_Conservative.npz')
+DO_cons = np.load(op.join(op.dirname(__file__),'files/S_h_DO_Conservative.npz'))
 DO_cons_freq = DO_cons['x']
 DO_cons_strain = DO_cons['y']
 eff_DO = 0.75
@@ -161,7 +165,7 @@ xerr_BBO, yerr_BBO, bins_mean_point_BBO, binned_signal_BBO, binned_curve_BBO = c
 ###############################################################################
 
 #class for LiteBIRD and r=0.001
-Fisher = np.load('/home/paolo/Codes/SGWBProbeComb/files/LiteBIRD_Fisher_matrices/Fisher_0.001_new_.npy')  
+Fisher = np.load(op.join(op.dirname(__file__),'files/LiteBIRD_Fisher_matrices/Fisher_4.0_r0001.npy'))  
 omega_gw_flat = class_no_axion.analytic_omega_WK(k)
 power_spectrum = class_no_axion.tensor_spect(k)
 
@@ -187,7 +191,7 @@ xerr_flat, yerr_flat, bins_mean_point_flat, binned_signal_flat, binned_curve_fla
 
 #class for LiteBIRD and r=0.01
 
-Fisher = np.load('/home/paolo/Codes/SGWBProbeComb/files/LiteBIRD_Fisher_matrices/Fisher_0.01_ticks.npy')  
+Fisher = np.load(op.join(op.dirname(__file__),'files/LiteBIRD_Fisher_matrices/Fisher_0.9_r001.npy'))  
 omega_gw_flat_r001 = class_no_axion_r001.analytic_omega_WK(k)
 power_spectrum_r001 = class_no_axion_r001.tensor_spect(k)
 
@@ -210,9 +214,8 @@ binned_signal_whole_flat_r001, bins_mean_point_whole_flat_r001 = class_binned_fl
 
 ###############################################################################
 
-# class for LiteBIRD and Axion model r_vac=1e-5, r_star=835, k_p=1e13, sigma=9
-
-Fisher_axion = np.load('/home/paolo/Codes/SGWBProbeComb/files/LiteBIRD_Fisher_matrices/Fisher_0.01_AXION_third.npy')  
+# class for LiteBIRD and AX1 model (just to plot the binned signal, not for error bars)
+Fisher_axion = np.load(op.join(op.dirname(__file__),'files/LiteBIRD_Fisher_matrices/Fisher_0.9_r001.npy'))  
 power_spectrum_axion = class_axion1.total_spect(k)
 
 class_binned_axion_CMB = Binned_GW(
@@ -231,7 +234,6 @@ class_binned_axion_CMB = Binned_GW(
                          )                 
                       
 binned_signal_whole_axion, bins_mean_point_whole_axion = class_binned_axion_CMB.Omega_GW_binning()
-xerr_axion, yerr_axion, bins_mean_point_axion, binned_signal_axion, binned_curve_axion = class_binned_axion_CMB.sens_curve_binning()
 
 ###############################################################################
 
@@ -445,5 +447,5 @@ plt.yscale('log')
 plt.xlim(ax, bx)
 plt.ylim(ay, by)
 
-plt.savefig('/home/paolo/Codes/SGWBProbeComb/figures/Fig_21.pdf', format='pdf', dpi=1000, bbox_inches='tight')
+plt.savefig(op.join(op.dirname(__file__),'figures/Fig_21.pdf'), format='pdf', dpi=1000, bbox_inches='tight')
 plt.show()

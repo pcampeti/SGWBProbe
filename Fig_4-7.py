@@ -3,8 +3,13 @@
 """
 Created on Tue Feb 25 17:00:48 2020
 
-@author: paolo
+@author: Paolo Campeti
+
+This script reproduces Figures 4 - 7 in the paper. 
+Uses methods imported from module sgwbprobecomb/foregrounds.py.
+
 """
+import os.path as op
 import numpy as np
 import matplotlib.pyplot as plt
 import warnings
@@ -29,47 +34,47 @@ mpl.rc('font',**{'family':'serif','serif':['Times New Roman'],'size':14})
 year_sec = 60*60*24*365 
 
 # LISA 
-LISA = np.load('/home/paolo/Codes/SGWBProbeComb/files/S_h_LISA_xcosmo.npz')
+LISA = np.load(op.join(op.dirname(__file__), 'files/S_h_LISA_xcosmo.npz'))
 LISA_freq = LISA['x']
 LISA_strain = LISA['y']
 
 # muAres 
-Ares = np.load('/home/paolo/Codes/SGWBProbeComb/files/S_h_muAres_nofgs.npz')
+Ares = np.load(op.join(op.dirname(__file__), 'files/S_h_muAres_nofgs.npz'))
 Ares_freq = Ares['x']
 Ares_strain = Ares['y']
 
 # BBO
-BBO = np.load('/home/paolo/Codes/SGWBProbeComb/files/S_h_BBO_STAR.npz')
+BBO = np.load(op.join(op.dirname(__file__), 'files/S_h_BBO_STAR.npz'))
 BBO_freq = BBO['x']
 BBO_strain = BBO['y']
 
 # DECIGO
-DECIGO = np.load('/home/paolo/Codes/SGWBProbeComb/files/S_h_DECIGO.npz')
+DECIGO = np.load(op.join(op.dirname(__file__), 'files/S_h_DECIGO.npz'))
 DECIGO_freq = DECIGO['x']
 DECIGO_strain = DECIGO['y']
 
 # DO Optimal
-DO = np.load('/home/paolo/Codes/SGWBProbeComb/files/S_h_DO_Optimal.npz')
+DO = np.load(op.join(op.dirname(__file__), 'files/S_h_DO_Optimal.npz'))
 DO_freq = DO['x']
 DO_strain = DO['y']
 
 # DO Conservative
-DO_cons = np.load('/home/paolo/Codes/SGWBProbeComb/files/S_h_DO_Conservative.npz')
+DO_cons = np.load(op.join(op.dirname(__file__), 'files/S_h_DO_Conservative.npz'))
 DO_cons_freq = DO_cons['x']
 DO_cons_strain = DO_cons['y']
 
 # AEDGE
-AEDGE = np.load('/home/paolo/Codes/SGWBProbeComb/files/S_h_AEDGE.npz')
+AEDGE = np.load(op.join(op.dirname(__file__), 'files/S_h_AEDGE.npz'))
 AEDGE_freq = AEDGE['x']
 AEDGE_strain = AEDGE['y']
 
 # SKA
-SKA = np.load('/home/paolo/Codes/SGWBProbeComb/files/hc_SKA.npz')
+SKA = np.load(op.join(op.dirname(__file__), 'files/hc_SKA.npz'))
 SKA_freq = SKA['x']
 SKA_hc = SKA['y']
 
 # AEDGE
-ET = np.load('/home/paolo/Codes/SGWBProbeComb/files/S_h_ET.npz')
+ET = np.load(op.join(op.dirname(__file__), 'files/S_h_ET.npz'))
 ET_freq = ET['x']
 ET_strain = ET['y']
 
@@ -88,7 +93,7 @@ plt.xlabel(r'f $[Hz]$',fontsize = 10.0)
 plt.ylabel(r'Characteristic Strain $\sqrt{f S_{n}(f)}$',fontsize = 10.0)
 plt.tick_params(axis = 'both',which = 'major', labelsize = 10.0)
 ax.legend(fontsize=10)
-plt.savefig('/home/paolo/Codes/SGWBProbeComb/figures/Fig_7_right.pdf', format='pdf', dpi=1000, bbox_inches='tight')
+plt.savefig(op.join(op.dirname(__file__), 'figures/Fig_7_right.pdf'), format='pdf', dpi=1000, bbox_inches='tight')
 plt.show()
 
 ###############################################################################
@@ -108,7 +113,7 @@ plt.xlabel(r'f $[Hz]$',fontsize = 10.0)
 plt.ylabel(r'Characteristic Strain $\sqrt{f S_{n}(f)}$',fontsize = 10.0)
 plt.tick_params(axis = 'both',which = 'major', labelsize = 10.0)
 ax.legend(fontsize=10)
-plt.savefig('/home/paolo/Codes/SGWBProbeComb/figures/Fig_4_left.pdf', format='pdf', dpi=1000, bbox_inches='tight')
+plt.savefig(op.join(op.dirname(__file__), 'figures/Fig_4_left.pdf'), format='pdf', dpi=1000, bbox_inches='tight')
 plt.show()
 ###############################################################################
 # Plot strain sensitivity for DO (Fig. 4, right panel)
@@ -128,7 +133,7 @@ plt.xlabel(r'f $[Hz]$',fontsize = 10.0)
 plt.ylabel(r'Characteristic Strain $\sqrt{f S_{n}(f)}$',fontsize = 10.0)
 plt.tick_params(axis = 'both',which = 'major', labelsize = 10.0)
 ax.legend(fontsize=10, loc='upper right')
-plt.savefig('/home/paolo/Codes/SGWBProbeComb/figures/Fig_4_right.pdf', format='pdf', dpi=1000, bbox_inches='tight')
+plt.savefig(op.join(op.dirname(__file__), 'figures/Fig_4_right.pdf'), format='pdf', dpi=1000, bbox_inches='tight')
 plt.show()
 
 ###############################################################################
@@ -147,7 +152,7 @@ plt.xlabel(r'f $[Hz]$',fontsize = 10.0)
 plt.ylabel(r'Characteristic Strain $\sqrt{f S_{n}(f)}$',fontsize = 10.0)
 plt.tick_params(axis = 'both',which = 'major', labelsize = 10.0)
 ax.legend(fontsize=10, loc='upper right')
-plt.savefig('/home/paolo/Codes/SGWBProbeComb/figures/Fig_5_left.pdf', format='pdf', dpi=1000, bbox_inches='tight')
+plt.savefig(op.join(op.dirname(__file__), 'figures/Fig_5_left.pdf'), format='pdf', dpi=1000, bbox_inches='tight')
 plt.show()
 
 ###############################################################################
@@ -173,7 +178,7 @@ plt.xlabel(r'f $[Hz]$',fontsize = 7.0)
 plt.ylabel(r'Characteristic Strain $\sqrt{f S_{n}(f)}$',fontsize = 10.0)
 plt.tick_params(axis = 'both',which = 'major', labelsize = 10.0)
 ax.legend(fontsize=10, loc='upper right')
-plt.savefig('/home/paolo/Codes/SGWBProbeComb/figures/Fig_5_right.pdf', format='pdf', dpi=1000, bbox_inches='tight')
+plt.savefig(op.join(op.dirname(__file__), 'figures/Fig_5_right.pdf'), format='pdf', dpi=1000, bbox_inches='tight')
 plt.show()
 
 ###############################################################################
@@ -193,7 +198,7 @@ plt.xlabel(r'f $[Hz]$',fontsize = 10.0)
 plt.ylabel(r'Characteristic Strain $\sqrt{f S_{n}(f)}$',fontsize = 10.0)
 plt.tick_params(axis = 'both',which = 'major', labelsize = 10.0)
 ax.legend(fontsize=10, loc='upper right')
-plt.savefig('/home/paolo/Codes/SGWBProbeComb/figures/Fig_6_left.pdf', format='pdf', dpi=1000, bbox_inches='tight')
+plt.savefig(op.join(op.dirname(__file__), 'figures/Fig_6_left.pdf'), format='pdf', dpi=1000, bbox_inches='tight')
 plt.show()
 
 ###############################################################################
@@ -213,7 +218,7 @@ plt.xlabel(r'f $[Hz]$',fontsize = 10.0)
 plt.ylabel(r'Characteristic Strain $\sqrt{f S_{n}(f)}$',fontsize = 10.0)
 plt.tick_params(axis = 'both',which = 'major', labelsize = 10.0)
 ax.legend(fontsize=10, loc='upper right')
-plt.savefig('/home/paolo/Codes/SGWBProbeComb/figures/Fig_6_right.pdf', format='pdf', dpi=1000, bbox_inches='tight')
+plt.savefig(op.join(op.dirname(__file__), 'figures/Fig_6_right.pdf'), format='pdf', dpi=1000, bbox_inches='tight')
 plt.show()
 
 
@@ -232,5 +237,5 @@ plt.xlabel(r'f $[Hz]$',fontsize = 10.0)
 plt.ylabel(r'Characteristic Strain $\sqrt{f S_{n}(f)}$',fontsize = 10.0)
 plt.tick_params(axis = 'both',which = 'major', labelsize = 10.0)
 ax.legend(fontsize=10)
-plt.savefig('/home/paolo/Codes/SGWBProbeComb/figures/Fig_7_left.pdf', format='pdf', dpi=1000, bbox_inches='tight')
+plt.savefig(op.join(op.dirname(__file__), 'figures/Fig_7_left.pdf'), format='pdf', dpi=1000, bbox_inches='tight')
 plt.show()

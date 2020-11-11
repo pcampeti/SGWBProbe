@@ -5,7 +5,11 @@ Created on Sat Nov  7 23:27:13 2020
 
 @author: Paolo Campeti
 
+This script reproduces Figure 1 in the paper. 
+Uses methods imported from module sgwbprobecomb/SGWB_Signal.py.
+
 """
+import os.path as op
 import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
@@ -55,5 +59,5 @@ plt.legend(fontsize = 7, loc='upper right')
 axes = plt.gca()
 axes.set_xlim([1e-4,1e20])
 axes.set_ylim([5e-14,1e-1])
-plt.savefig('/home/paolo/Codes/SGWBProbeComb/figures/Fig_1.pdf', format='pdf', dpi=1000, bbox_inches='tight')
+plt.savefig(op.join(op.dirname(__file__), 'figures/Fig_1.pdf'), format='pdf', dpi=1000, bbox_inches='tight')
 plt.show()

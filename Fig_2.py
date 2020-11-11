@@ -3,9 +3,12 @@
 """
 Created on Wed Mar 18 15:52:46 2020
 
-@author: paolo
-"""
+@author: Paolo Campeti
 
+This script reproduces Figure 2 in the paper. 
+
+"""
+import os.path as op
 import numpy as np
 import pylab as pl
 from fgbuster.cosmology import _get_Cl_cmb
@@ -35,10 +38,10 @@ average_white = np.zeros((lmax))
 fig, ax = pl.subplots()    
 for i in range(0, N_sim):
     if i==0:
-        ClBB_res_noise_white = np.load('/home/paolo/Codes/SGWBProbeComb/files/LiteBIRD_fgs_residuals/ClBB_res_noise_white_'+str(i)+'.npy')
+        ClBB_res_noise_white = np.load(op.join(op.dirname(__file__), 'files/LiteBIRD_fgs_residuals/ClBB_res_noise_white_'+str(i)+'.npy'))
         ax.loglog(norm*ClBB_res_noise_white[lmin:lmax], color='DarkOrange', linewidth=1.0, alpha=1.0, label='Realizations of Res. Foregrounds +Post-Comp.Sep Noise')
     if i != 58 and i != 110: #jump missing noise simulation
-        ClBB_res_noise_white = np.load('/home/paolo/Codes/SGWBProbeComb/files/LiteBIRD_fgs_residuals/ClBB_res_noise_white_'+str(i)+'.npy')
+        ClBB_res_noise_white = np.load(op.join(op.dirname(__file__),'files/LiteBIRD_fgs_residuals/ClBB_res_noise_white_'+str(i)+'.npy'))
         average_white += ClBB_res_noise_white[:lmax]
         ax.loglog(norm*ClBB_res_noise_white[lmin:lmax], color='DarkOrange', linewidth=1.0, alpha=1.0)
         
@@ -54,7 +57,7 @@ ax.legend(loc='upper left', fontsize=11)
 ax.set_xlim([lmin, 200])
 ax.set_xlabel('$\ell$', fontsize=15)
 ax.set_ylabel('$\ell(\ell+1)C_\ell / 2\pi$', fontsize=15)
-pl.savefig('/home/paolo/Codes/SGWBProbeComb/figures/Fig_2.pdf', format='pdf', dpi=1000, bbox_inches='tight')
+pl.savefig(op.join(op.dirname(__file__), 'figures/Fig_2.pdf'), format='pdf', dpi=1000, bbox_inches='tight')
 pl.show()
 
 
