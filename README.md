@@ -58,6 +58,7 @@ be used to interpolate in logarithimc space.
 The `SGWB_Signal` class contains methods useful to compute the energy density of gravitational 
 waves for the single-field slow-roll and axion-SU(2) models described in 
 Section 2 of the paper.
+
  The input parameters are:   
  - `r_vac`: float. Tensor-to-scalar ratio for quantum vacuum fluctuations (named simply r
         in the paper).
@@ -79,7 +80,91 @@ Section 2 of the paper.
  - `running`: Boolean type (optional). If True includes the running in the tensor power spectrum according to
         the inflatonary consistency relation (see Sec.2.1).
 
+#### The `Binned_GW` class
+The `Binned_GW` class contains of methods used to compute the binned sensitivity curve given the sensitivity curve of a GW observatory.
 
+The input parameters are:
+- `name_exp`: string. 
+            Name of the current experiment. 
+            
+- `kmin`: float.
+            Minimum wavenumber k of the signal  
+            
+- `k`: numpy array.
+            array of wavenumbers for the signal.
+            
+- `N_bins`: integer.
+            Number of bins in which the signal is binned along the whole k 
+            range, only for plotting purposes. N_bins=80 is usually enough to
+            cover the range from 10^-18 to 10^4 Hz, you should increase it if
+            the you are using smaller bins or decrease it for larger bins.
+            
+- `delta_log_k`: float, the logarithm bin step.
+        
+- `omega_gw`: numpy array.
+            The GW signal (gravitational wave energy density in GWs today in 
+            the Universe) computed from the Signal_GW class.
+            
+- `kmin_sens`: float.
+            The minimum k of the sensitivity range of the experiment.
+            
+- `N_bins_sens`: integer. 
+            The number of bins in the experiment sensitivity range.
+            
+- `T_obs`: float. 
+            The mission observation time in seconds.
+            
+- `tensor_spect`: numpy array (optional). 
+            Input tensor power spectrum for the model analyzed (Eqs.(2.1) 
+            and (2.5)).
+            
+- `k_sens`: numpy array.
+            Array of wavenumbers k representing the band-width of a 
+            given experiment.
+            
+- `sens_curve`: numpy  array. 
+            The experiment instrumental strain sensitivity S_h from Eq.(4.13). 
+            
+- `CMB`: Boolean type (optional). 
+            True if we are computing a CMB sensitivity curve, False otherwise.
+            
+- `F`: numpy ndarray with shape (N_bins_sens, N_bins_sens) (optional). 
+            The CMB sensitivity Fisher matrix (optional, necessary only if we 
+            want to compute the sensitivity for a CMB experiment).
+            
+- `A_S`: float (optional).
+            Amplitude of the scalar perturbations spectrum, default to 
+            A_S=2.1e-9.
+            
+- `interp`: Boolean type (optional). 
+            True if you want to interpolate along the instrument bandwidth the 
+            input instrumental strain sensitivity 
+            curve (sens_curve).
+            
+- `n_det` : integer. 
+            Number of detectors in the cross-correlation for interferometers 
+            (see Eq.(4.10)), default to n_det=1.
+            
+- `fgs`: Boolean type (optional). 
+            True if you want error bars including foregrounds residuals.
+            
+- `sigma_L`: float. 
+            Fractional uncertainty on the amplitude of the BBH+BNS foreground 
+            given by an external experiment (see Sec.4.2.2).
+            
+- `cosmic_var`: Boolean type (optional). 
+            True if you want to include the cosmic variance in the 
+            interferometer SNR (see Ref.[5]).
+            
+- `f_R`: numpy array (optional).
+            Frequency band for the response function necessary only if you want
+            also the cosmic variance for the interferometers. 
+            
+- `R_auto`: numpy array.
+            The frequency response R_II for the interferometer.
+            
+-`R_12`: numpy array. 
+            The frequency response R_IJ with I/=J for the interferometer.
 
 ### The `files/` folder
 The strain sensitivity curves as a function of frequency for the experiments used in the paper are included in the folder `files/` in `.npz` format.
