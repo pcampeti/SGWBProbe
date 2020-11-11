@@ -13,6 +13,8 @@ the frequency of GWs to the temperature T_hc at which the corresponding
 mode re-enters the horizon. Uses also functions tabulated and provided within 
 Ref.[5].
 """
+import os
+import os.path as op
 import numpy as np
 import warnings
 warnings.filterwarnings("ignore")
@@ -31,7 +33,7 @@ def g_of_k(k):
     freq = k/6.5e14
     
     # Load tabulated functions provided by Ref.[5].
-    filetoread = '/home/paolo/Codes/SGWBProbeComb/files/effective_degrees.dat' 
+    filetoread = op.join( op.dirname(__file__), '..', 'files/effective_degrees.dat')
     dataset = np.genfromtxt(filetoread, names=None, skip_header=0) #mind the skip_header
     T = dataset[:,0] #[GeV]
     grho = dataset[:,1] 
