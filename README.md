@@ -1,10 +1,13 @@
 ## Stochastic Gravitational Wave Background Probes combination (SGWBProbe)
 
-This package allows to compute the binned sensitivity curves and error bars on the fractional
-energy density of gravitational waves in the Universe at the present time, <img src="https://render.githubusercontent.com/render/math?math=\Omega_{GW} h^2">, as a function of frequency for two representative classes
+This package, accompanying the paper Campeti, Komatsu, Poletti & Baccigalupi 2020 (https://arxiv.org/abs/2007.04241), allows to compute the binned sensitivity curves and error bars on the fractional
+energy density of gravitational waves in the Universe at the present time, <img src="https://render.githubusercontent.com/render/math?math=\Omega_{GW} h^2">, as a function of frequency for a wide selection of experiments, including at the moment:
+- LISA
+- 
+two representative classes
 of models for the stochastic background of primordial GW: the quantum vacuum fluctuation
 in the metric from single-field slow-roll inflation, and the source-induced tensor perturbation
-from the spectator axion-SU(2) inflation models.
+from the spectator axion-SU(2) inflation models. 
 
 ### Scripts to reproduce paper figures 
 We provide python scripts that can be used to quickly reproduce each the figures found in the paper Campeti, Komatsu, Poletti & Baccigalupi 2020 (https://arxiv.org/abs/2007.04241), that is:
