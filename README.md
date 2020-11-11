@@ -40,20 +40,22 @@ The figures produced by these scripts are collected in the folder `figures/`
 The `sgwbprobe` package provided here contains the modules
 - `SGWB_Signal.py` containing the class `Signal_GW` needed to compute the energy density 
 for the SU(2) Axion model of inflation and the standard signle-field slow-roll 
-one
+one. More details on the input parameters for the `SGWB_Signal` class are given below.
 - `Binned_errors.py`containing the class `Binned_GW` needed to compute the binned 
-sensitivity given the sensitivity curve for a GW experiment
-
+sensitivity given the sensitivity curve for a GW experiment. More details on the input parameters for the `Binned_GW` class are given below.
 - `error_boxes.py` containing the function `make_error_boxes` used to plot the error 
-rectangles
+rectangles.
 - `foregrounds.py` containing the functions used to compute the analytical 
 approximations for the GWD, EGWD, MBHB and BBH+BNS foreground component for the
-interferometers and PTA (see Section 4.2.1 in the paper)
+interferometers and PTA (see Section 4.2.1 in the paper).
 - `effective_degrees.py` containing the function `g_of_k` used to compute the number of 
 effective degrees of freedom <img src="https://render.githubusercontent.com/render/math?math=g_{*rho}"> and <img src="https://render.githubusercontent.com/render/math?math=g_{*s}"> as a function of 
-wavenumber k
+wavenumber k.
 - `interpolate.py` containing the functions `log_interp1d` and `log_interp1d_fill`, which can 
 be used to interpolate in logarithimc space.
+
+#### The 
+
 
 ### The `files/` folder
 The strain sensitivity curves as a function of frequency for the experiments used in the paper are included in the folder `files/` in `.npz` format.
