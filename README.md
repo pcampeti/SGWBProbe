@@ -1,7 +1,7 @@
 ## Stochastic Gravitational Wave Background Probe Combination (SGWBProbeComb)
 
 This package allows to compute the binned sensitivity curves and error bars on the fractional
-energy density of gravitational waves in the Universe at the present time, $\Omega_{GW} h^2$, as a function of frequency for two representative classes
+energy density of gravitational waves in the Universe at the present time, <img src="https://render.githubusercontent.com/render/math?math=\Omega_{GW} h^2">, as a function of frequency for two representative classes
 of models for the stochastic background of primordial GW: the quantum vacuum fluctuation
 in the metric from single-field slow-roll inflation, and the source-induced tensor perturbation
 from the spectator axion-SU(2) inflation models.
@@ -13,4 +13,4 @@ Note that the name of each script contains the respective number of the figure i
 
 
 The package contains:
-- 
+- jjjj
