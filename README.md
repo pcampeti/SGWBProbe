@@ -60,33 +60,6 @@ and used in your own Python code.
 The error bars for CMB experiments are computed using a Fisher matrix approach. The Fisher matrices (computed as described in Section 3 of the paper) are gathered in the folder `files/LiteBIRD_Fisher_matrices/`. 
 The name of each file contains the binning width and the specific power spectrum model used to compute them (e.g. the file `Fisher_1.3_r0.npy` contains the Fisher matrix for a binning width <img src="https://render.githubusercontent.com/render/math?math=\Delta\ln k = 1.3"> for the single-field slow-roll model with <img src="https://render.githubusercontent.com/render/math?math=\r=0">).
 
-### Example of usage
-We first need to load and unpack the instrumental strain sensivity curves as a function of frequency, e.g. for LISA
-```python
-LISA = np.load(op.join(op.dirname(__file__),'files/S_h_LISA_xcosmo.npz'))
-LISA_freq = LISA['x']
-LISA_strain = LISA['y']
-
-```
-We then choose a value for the data-taking efficiency and mission observation time for the experiment, 
-```python
-eff_LISA = 0.75
-LISA_T_obs = 4 * year_sec * eff_LISA
-
-```
-We then create an instance of the `Signal_GW` class in order to generate the primordial signal <img src="https://render.githubusercontent.com/render/math?math=\Omega_{GW} h^2"> we are interested in, e.g. from an axion-SU(2) with the following parameters (called AX1 model in the paper)
-```python
-class_axion1 = Signal_GW(r_vac=1e-5, r_star=400, k_p=1e13, sigma=8.1, axion=True, running=True)
-
-```
-We then choose the wavenumber range over which we want to plot the spectrum of GWs, e.g. <img src="https://render.githubusercontent.com/render/math?math=10^{-5} - 10^{20}\,Mpc^{-1}">  
-```python
-k = np.logspace(np.log10(1e-5), np.log10(1e20), 100000)
-```
-We then 
-
-
-
 
 ### The `sgwbprobe` package
 The `sgwbprobe` package provided here contains the modules
@@ -217,5 +190,108 @@ The input parameters are:
             
 - `R_12`: numpy array. The frequency response <img src="https://render.githubusercontent.com/render/math?math=R_{IJ}"> with <img src="https://render.githubusercontent.com/render/math?math=I<J"> for the interferometer.
 
+
+### Example of usage
+We first need to load and unpack the instrumental strain sensivity curves as a function of frequency, e.g. for LISA
+```python
+LISA = np.load(op.join(op.dirname(__file__),'files/S_h_LISA_xcosmo.npz'))
+LISA_freq = LISA['x']
+LISA_strain = LISA['y']
+
+```
+We then choose a value for the data-taking efficiency and mission observation time for the experiment, 
+```python
+eff_LISA = 0.75
+LISA_T_obs = 4 * year_sec * eff_LISA
+
+```
+We create an instance of the `Signal_GW` class, e.g. for an axion-SU(2) with the following parameters (called AX1 model in the paper)
+```python
+class_axion1 = Signal_GW(r_vac=1e-5, r_star=400, k_p=1e13, sigma=8.1, axion=True, running=True)
+
+```
+and choose the wavenumber range over which we want to plot the spectrum of GWs, e.g. <img src="https://render.githubusercontent.com/render/math?math=10^{-5} - 10^{20}\,Mpc^{-1}">  
+```python
+k = np.logspace(np.log10(1e-5), np.log10(1e20), 100000)
+
+```
+in order to generate the primordial signal <img src="https://render.githubusercontent.com/render/math?math=\Omega_{GW} h^2"> we are interested in
+```python
+omega_gw = class_axion1.analytic_omega_WK(k)
+
+```
+We can now instantiate the class `Binned_GW` with the chosen specifications and signal for LISA:
+```python
+sens_curve_LISA = np.array(LISA_strain)
+k_LISA = np.array(LISA_freq) * 6.5e14
+
+class_binned = Binned_GW(
+                         name_exp = 'LISA',
+                         kmin=1e-4,
+                         k=k,
+                         N_bins=80,
+                         delta_log_k=1.2,
+                         sens_curve=sens_curve_LISA,
+                         omega_gw=omega_gw,
+                         k_sens=k_LISA,
+                         kmin_sens=1.21303790e+10,
+                         N_bins_sens=7,
+                         T_obs=LISA_xcosmo_T_obs,
+                         interp=True,
+                         n_det = 1.,
+                         sigma_L=1.0
+                         )
+
+```
+in this case without foreground contamination.
+Now, we can obtain the signal binned in frequency from the method `Omega_GW_binning` 
+```python
+binned_signal_y, binned_signal_x = class_binned.Omega_GW_binning()
+
+```
+which we will then plot, and get also the inputs for the `make_error_boxes` function which we will later use to create and plot the error bars, from the `sens_curve_binning` method:
+```python
+xerr, yerr, bins_mean_point, binned_signal, binned_curve = class_binned.sens_curve_binning()
+
+```
+Similarly, we can instantiate the class `Binned_GW` again for the LISA experiments, but adding this time the residual foreground contamination:
+```python
+class_binned_fgs = Binned_GW(
+                         name_exp='LISA_with_fgs',
+                         kmin=1e-4,
+                         k=k,
+                         N_bins=80,
+                         delta_log_k=1.2,
+                         sens_curve=sens_curve_LISA,
+                         omega_gw=omega_gw,
+                         k_sens=k_LISA,
+                         kmin_sens=1.21303790e+10,
+                         N_bins_sens=7,
+                         T_obs=LISA_xcosmo_T_obs,
+                         n_det = 1.,
+                         fgs=True,
+                         interp=True,
+                         sigma_L=0.1
+                         )
+
+xerr_fgs, yerr_fgs, bins_mean_point_fgs, binned_signal_fgs, binned_curve_fgs = class_binned_fgs.sens_curve_binning()
+
+```
+Finally we can plot on the same figure the binned signal,
+```python
+fig = plt.figure()
+ax = plt.gca()
+plt.loglog(np.array(binned_signal_x)/6.5e14, binned_signal_y, color='blue',label=r'Axion Signal $r_{\star}=400$, $k_{p}=10^{15}$ $Mpc^{-1}$, $\sigma=9.1$',linewidth=1.0, zorder=18)
+
+```
+the error bars for the foreground-less case
+```python
+_ = make_error_boxes(ax, np.array(bins_mean_point)/6.5e14, binned_signal, xerr/6.5e14, yerr, facecolor='b', alpha=0.7, zorder=10)
+```
+and the error bars including foreground residuals
+```python
+_ = make_error_boxes(ax, np.array(bins_mean_point_fgs)/6.5e14, binned_signal_fgs, xerr_fgs/6.5e14, yerr_fgs, facecolor='b', alpha=0.4, zorder=9)
+
+```
 
 
