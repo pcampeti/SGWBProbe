@@ -279,16 +279,16 @@ xerr_fgs, yerr_fgs, bins_mean_point_fgs, binned_signal_fgs, binned_curve_fgs = c
 ```
 Finally we can plot on the same figure the binned signal,
 ```python
-plt.loglog(np.array(binned_signal_x)/6.5e14, binned_signal_y, color='blue',label=r'Axion Signal $r_{\star}=400$, $k_{p}=10^{15}$ $Mpc^{-1}$, $\sigma=9.1$',linewidth=1.0, zorder=18)
+plt.loglog(np.array(binned_signal_x)/6.5e14, binned_signal_y, label=r'Axion Signal $r_{\star}=400$, $k_{p}=10^{15}$ $Mpc^{-1}$, $\sigma=9.1$')
 
 ```
 the error bars for the foreground-less case
 ```python
-_ = make_error_boxes(ax, np.array(bins_mean_point)/6.5e14, binned_signal, xerr/6.5e14, yerr, facecolor='b', alpha=0.7, zorder=10)
+_ = make_error_boxes(ax, np.array(bins_mean_point)/6.5e14, binned_signal, xerr/6.5e14, yerr, facecolor='b', alpha=0.7, zorder=2)
 ```
 and the error bars including foreground residuals
 ```python
-_ = make_error_boxes(ax, np.array(bins_mean_point_fgs)/6.5e14, binned_signal_fgs, xerr_fgs/6.5e14, yerr_fgs, facecolor='b', alpha=0.4, zorder=9)
+_ = make_error_boxes(ax, np.array(bins_mean_point_fgs)/6.5e14, binned_signal_fgs, xerr_fgs/6.5e14, yerr_fgs, facecolor='b', alpha=0.4, zorder=1)
 
 ```
 Similarly, we can obtain error bars for CMB experiments: in this case the class `Binned_GW` needs to be instantiated with the appropriate Fisher matrix and the tensor power spectrum obtained from the `total_spect` method of the `Signal_GW` class
@@ -318,9 +318,9 @@ xerr_axion, yerr_axion, bins_mean_point_axion, binned_signal_axion, binned_curve
 ### Example of usage: binned sensitivity curves
 A completely similar procedure can be used to generate binned sensitivity curves as in Fig.8 in our paper. In this case we will just use the binned <img src="https://render.githubusercontent.com/render/math?math=\Omega_{GW} h^2"> sensitivity curve also given by the `sens_curve_binning` method:
 ```python
-ax.loglog(np.array(bins_mean_point)/6.5e14, binned_curve[:len(bins_mean_point)], label='LISA w/o fgs', linewidth='1.5', color=sns.xkcd_rgb["black"], linestyle='--')
+ax.loglog(np.array(bins_mean_point)/6.5e14, binned_curve[:len(bins_mean_point)], label='LISA w/o fgs')
 
-ax.loglog(np.array(bins_mean_point_fgs)/6.5e14, binned_curve_fgs[:len(bins_mean_point_fgs)], label='LISA w/ fgs', linestyle='-', linewidth='1.5', color=sns.xkcd_rgb["black"])
+ax.loglog(np.array(bins_mean_point_fgs)/6.5e14, binned_curve_fgs[:len(bins_mean_point_fgs)], label='LISA w/ fgs')
 
 ```
 
