@@ -36,6 +36,7 @@ We provide python scripts that can be used to quickly reproduce each the figures
 where the name of each script indicates the respective number of the figures in the paper.
 The figures produced by these scripts are collected in the folder `figures/`
 
+Note that running [Fig_2.py](https://github.com/pcampeti/SGWBProbe/blob/main/Fig_2.py) requires the installation of the [FGBuster](https://github.com/fgbuster/fgbuster) package.
 
 ### Available sensitivity curves and response functions
 The strain sensitivity curves as a function of frequency for the experiments used in the paper are included in the `files/` folder in `.npz` format.
@@ -323,4 +324,6 @@ ax.loglog(np.array(bins_mean_point)/6.5e14, binned_curve[:len(bins_mean_point)],
 ax.loglog(np.array(bins_mean_point_fgs)/6.5e14, binned_curve_fgs[:len(bins_mean_point_fgs)], label='LISA w/ fgs')
 
 ```
+
+
 
