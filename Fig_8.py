@@ -641,3 +641,34 @@ plt.tick_params(axis = 'both',which = 'major', labelsize = 10.0)
 ax.legend(fontsize=8, bbox_to_anchor=(1, 1.0))
 plt.savefig(op.join(op.dirname(__file__),'figures/Fig_8.pdf'), format='pdf', dpi=1000, bbox_inches='tight')
 plt.show()
+
+# saving binned Omega_gw h^2 curves as a function of frequency to .npz files 
+np.savez(op.join(op.dirname(__file__),'files/Binned_Omega_curves/Binned_Omega_DECIGO_nofgs.npz'), x=np.array(bins_mean_point_decigo)/6.5e14, y=binned_curve_decigo[:len(bins_mean_point_decigo)])
+np.savez(op.join(op.dirname(__file__),'files/Binned_Omega_curves/Binned_Omega_DECIGO_fgs.npz'), x=np.array(bins_mean_point_decigo_fgs)/6.5e14, y=binned_curve_decigo_fgs[:len(bins_mean_point_decigo_fgs)])
+
+np.savez(op.join(op.dirname(__file__),'files/Binned_Omega_curves/Binned_Omega_LISA_nofgs.npz'), x=np.array(bins_mean_point)/6.5e14, y=binned_curve[:len(bins_mean_point_decigo)])
+np.savez(op.join(op.dirname(__file__),'files/Binned_Omega_curves/Binned_Omega_LISA_fgs.npz'), x=np.array(bins_mean_point_fgs)/6.5e14, y=binned_curve_fgs[:len(bins_mean_point_fgs)])
+
+np.savez(op.join(op.dirname(__file__),'files/Binned_Omega_curves/Binned_Omega_BBO_nofgs.npz'), x=np.array(bins_mean_point_BBO)/6.5e14, y=binned_curve_BBO[:len(bins_mean_point_BBO)])
+
+np.savez(op.join(op.dirname(__file__),'files/Binned_Omega_curves/Binned_Omega_DO_Optimal_nofgs.npz'), x=np.array(bins_mean_point_DO)/6.5e14, y=binned_curve_DO[:len(bins_mean_point_DO)])
+np.savez(op.join(op.dirname(__file__),'files/Binned_Omega_curves/Binned_Omega_DO_Optimal_fgs.npz'), x=np.array(bins_mean_point_DO_fgs)/6.5e14, y=binned_curve_DO_fgs[:len(bins_mean_point_DO_fgs)])
+
+np.savez(op.join(op.dirname(__file__),'files/Binned_Omega_curves/Binned_Omega_DO_Conservative_nofgs.npz'), x=np.array(bins_mean_point_DO_cons)/6.5e14, y=binned_curve_DO_cons[:len(bins_mean_point_DO_cons)])
+np.savez(op.join(op.dirname(__file__),'files/Binned_Omega_curves/Binned_Omega_DO_Conservative_fgs.npz'), x=np.array(bins_mean_point_DO_cons_fgs)/6.5e14, y=binned_curve_DO_cons_fgs[:len(bins_mean_point_DO_cons_fgs)])
+
+np.savez(op.join(op.dirname(__file__),'files/Binned_Omega_curves/Binned_Omega_AEDGE_nofgs.npz'), x=np.array(bins_mean_point_AEDGE)/6.5e14, y=binned_curve_AEDGE[:len(bins_mean_point_AEDGE)])
+np.savez(op.join(op.dirname(__file__),'files/Binned_Omega_curves/Binned_Omega_AEDGE_fgs.npz'), x=np.array(bins_mean_point_AEDGE_fgs)/6.5e14, y=binned_curve_AEDGE_fgs[:len(bins_mean_point_AEDGE_fgs)])
+
+np.savez(op.join(op.dirname(__file__),'files/Binned_Omega_curves/Binned_Omega_muAres_nofgs.npz'), x=np.array(bins_mean_point_muares_nofgs)/6.5e14, y=binned_curve_muares_nofgs[:len(bins_mean_point_muares_nofgs)])
+np.savez(op.join(op.dirname(__file__),'files/Binned_Omega_curves/Binned_Omega_muAres_fgs.npz'), x=np.array(bins_mean_point_muares)/6.5e14, y=binned_curve_muares[:len(bins_mean_point_muares)])
+
+np.savez(op.join(op.dirname(__file__),'files/Binned_Omega_curves/Binned_Omega_SKA_nofgs.npz'), x=np.array(bins_mean_point_SKA)/6.5e14, y=binned_curve_SKA[:len(bins_mean_point_SKA)])
+np.savez(op.join(op.dirname(__file__),'files/Binned_Omega_curves/Binned_Omega_SKA_fgs.npz'), x=np.array(bins_mean_point_SKA_fgs)/6.5e14, y=binned_curve_SKA_fgs[:len(bins_mean_point_SKA_fgs)])
+
+np.savez(op.join(op.dirname(__file__),'files/Binned_Omega_curves/Binned_Omega_ET_nofgs.npz'), x=np.array(bins_mean_point_ET)/6.5e14, y=binned_curve_ET[:len(bins_mean_point_ET)])
+np.savez(op.join(op.dirname(__file__),'files/Binned_Omega_curves/Binned_Omega_ET_fgs.npz'), x=np.array(bins_mean_point_ET_fgs)/6.5e14, y=binned_curve_ET_fgs[:len(bins_mean_point_ET_fgs)])
+
+np.savez(op.join(op.dirname(__file__),'files/Binned_Omega_curves/Binned_Omega_LiteBIRD_fgs.npz'), x=np.array(bins_mean_point_flat_0001)/6.5e14, y=binned_curve_flat_0001[:len(bins_mean_point_flat_0001)])
+
+np.savez(op.join(op.dirname(__file__),'files/Binned_Omega_curves/Binned_Omega_aLIGO.npz'), x=np.array(bins_mean_point_aLIGO)/6.5e14, y=binned_curve_aLIGO[:len(bins_mean_point_aLIGO)])
