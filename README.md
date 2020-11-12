@@ -57,7 +57,7 @@ freq_LISA = np.load(f_R_LISA.npy')
 
 ```
 #### Binned <img src="https://render.githubusercontent.com/render/math?math=\Omega_{GW} h^2"> sensitivity curves
-We also provide in the folder `files/Binned_Omega_curves/` the binned <img src="https://render.githubusercontent.com/render/math?math=\Omega_{GW} h^2"> sensitivity curves for all experiments (with and without foregrounds residuals) in `.npz` format, obtained using [Fig_8.py](https://github.com/pcampeti/SGWBProbe/blob/main/Fig_8.py) (see also the section "Example of usage: binned sensitivity curves" below). Again, these files can be unpacked using e.g.
+We also provide in the folder `files/Binned_Omega_curves/` the binned <img src="https://render.githubusercontent.com/render/math?math=\Omega_{GW} h^2"> sensitivity curves for all experiments (with and without foregrounds residuals) (shown in Fig. 8 of our paper) in `.npz` format, obtained using [Fig_8.py](https://github.com/pcampeti/SGWBProbe/blob/main/Fig_8.py) (see also the section "Example of usage: binned sensitivity curves" below). Again, these files can be unpacked using e.g.
 ```python
 LISA = np.load('Binned_Omega_LISA_nofgs.npz')
 LISA_freq = LISA['x']
