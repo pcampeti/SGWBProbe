@@ -38,26 +38,34 @@ The figures produced by these scripts are collected in the folder `figures/`
 
 Note that running [Fig_2.py](https://github.com/pcampeti/SGWBProbe/blob/main/Fig_2.py) requires the installation of the [FGBuster](https://github.com/fgbuster/fgbuster) package.
 
-### Available sensitivity curves and response functions
+### Available products
+#### Strain sensitivity curves
 The strain sensitivity curves as a function of frequency for the experiments used in the paper are included in the `files/` folder in `.npz` format.
 Their content can be easily unpacked through a simple script, e.g. for the LISA experiment 
 ```python
-LISA = np.load(op.join(op.dirname(__file__),'files/S_h_LISA_xcosmo.npz'))
+LISA = np.load(S_h_LISA_xcosmo.npz')
 LISA_freq = LISA['x']
 LISA_strain = LISA['y']
 
 ```
 and used in your own Python code.
-
-The folder `files/Responses/` contains the response function as a function of frequency in `.npy` format for the laser interferometers computed as described in Appendix A of the paper. Their content can be easily unpacked through a simple script, e.g. for the LISA experiment
+#### Response functions
+The folder `files/Responses/` contains the response function as a function of frequency in `.npy` format for the laser interferometers computed as described in Appendix A of the paper. Also their content can be easily unpacked and used in your own code, e.g. for the LISA experiment
 ```python
-Resp_LISA = np.load(op.join(op.dirname(__file__),'files/Responses/Resp_LISA.npy'))
-freq_LISA = np.load(op.join(op.dirname(__file__),'files/Responses/f_R_LISA.npy'))
+Resp_LISA = np.load(Resp_LISA.npy')
+freq_LISA = np.load(f_R_LISA.npy')
 
 ```
-and used in your own Python code.
+#### Binned <img src="https://render.githubusercontent.com/render/math?math=\Omega_{GW} h^2"> sensitivity curves
+We also provide in the folder `files/Binned_Omega_curves/` the binned <img src="https://render.githubusercontent.com/render/math?math=\Omega_{GW} h^2"> sensitivity curves for all experiments (with and without foregrounds residuals) in `.npz` format, obtained using [Fig_8.py](https://github.com/pcampeti/SGWBProbe/blob/main/Fig_8.py) (see also the section "Example of usage: binned sensitivity curves" below). Again, these files can be unpacked using e.g.
+```python
+LISA = np.load('Binned_Omega_LISA_nofgs.npz')
+LISA_freq = LISA['x']
+LISA_binned_omega = LISA['y']
 
+```
 
+#### CMB Fisher matrices
 The error bars for CMB experiments are computed using a Fisher matrix approach. The Fisher matrices (computed as described in Section 3 of the paper) are gathered in the folder `files/LiteBIRD_Fisher_matrices/`. 
 The name of each file contains the binning width and the specific power spectrum model used to compute them (e.g. the file `Fisher_1.3_r0.npy` contains the Fisher matrix for a binning width <img src="https://render.githubusercontent.com/render/math?math=\Delta\ln k = 1.3"> for the single-field slow-roll model with <img src="https://render.githubusercontent.com/render/math?math=\r=0">).
 
