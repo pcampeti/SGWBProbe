@@ -74,7 +74,7 @@ rectangles.
 approximations for the GWD, EGWD, MBHB and BBH+BNS foreground component for the
 interferometers and PTA (see Section 4.2.1 in the paper).
 - `effective_degrees.py` containing the function `g_of_k` used to compute the number of 
-effective degrees of freedom <img src="https://render.githubusercontent.com/render/math?math=g_{*rho}"> and <img src="https://render.githubusercontent.com/render/math?math=g_{*s}"> as a function of 
+effective degrees of freedom <img src="https://render.githubusercontent.com/render/math?math=g_{*\rho}"> and <img src="https://render.githubusercontent.com/render/math?math=g_{*s}"> as a function of 
 wavenumber k.
 - `interpolate.py` containing the functions `log_interp1d` and `log_interp1d_fill`, which can 
 be used to interpolate in logarithimc space.
