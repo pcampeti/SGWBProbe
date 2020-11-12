@@ -19,7 +19,7 @@ The forecasts are presented for two representative classes of models for the sto
 - the source-induced tensor perturbation from the spectator axion-SU(2) inflation models. 
 
 ### Scripts reproducing paper's figures 
-We provide python scripts that can be used to quickly reproduce each the figures found in the paper Campeti, Komatsu, Poletti & Baccigalupi 2020 (https://arxiv.org/abs/2007.04241), that is:
+We provide python scripts that can be used to quickly reproduce each of the figures found in the paper Campeti, Komatsu, Poletti & Baccigalupi 2020 (https://arxiv.org/abs/2007.04241), that is:
 
 - [Fig_1.py](https://github.com/pcampeti/SGWBProbe/blob/main/Fig_1.py)
 - [Fig_2.py](https://github.com/pcampeti/SGWBProbe/blob/main/Fig_2.py)
