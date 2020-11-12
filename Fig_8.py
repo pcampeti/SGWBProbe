@@ -645,6 +645,7 @@ plt.show()
 # saving binned Omega_gw h^2 curves as a function of frequency to .npz files 
 np.savez(op.join(op.dirname(__file__),'files/Binned_Omega_curves/Binned_Omega_DECIGO_nofgs.npz'), x=np.array(bins_mean_point_decigo)/6.5e14, y=binned_curve_decigo[:len(bins_mean_point_decigo)])
 np.savez(op.join(op.dirname(__file__),'files/Binned_Omega_curves/Binned_Omega_DECIGO_fgs.npz'), x=np.array(bins_mean_point_decigo_fgs)/6.5e14, y=binned_curve_decigo_fgs[:len(bins_mean_point_decigo_fgs)])
+np.savez(op.join(op.dirname(__file__),'files/Binned_Omega_curves/Binned_Omega_DECIGO_spectral.npz'), x=np.array(bins_mean_point_decigo_spectral)/6.5e14, y=binned_curve_decigo_spectral[:len(bins_mean_point_decigo_spectral)])
 
 np.savez(op.join(op.dirname(__file__),'files/Binned_Omega_curves/Binned_Omega_LISA_nofgs.npz'), x=np.array(bins_mean_point)/6.5e14, y=binned_curve[:len(bins_mean_point_decigo)])
 np.savez(op.join(op.dirname(__file__),'files/Binned_Omega_curves/Binned_Omega_LISA_fgs.npz'), x=np.array(bins_mean_point_fgs)/6.5e14, y=binned_curve_fgs[:len(bins_mean_point_fgs)])
