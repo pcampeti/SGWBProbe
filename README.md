@@ -40,7 +40,7 @@ Note that running [Fig_2.py](https://github.com/pcampeti/SGWBProbe/blob/main/Fig
 
 ### Available sensitivity curves and response functions
 The strain sensitivity curves as a function of frequency for the experiments used in the paper are included in the `files/` folder in `.npz` format.
-Their content can be easily unpacked through a simple script, e.g for the LISA experiment 
+Their content can be easily unpacked through a simple script, e.g. for the LISA experiment 
 ```python
 LISA = np.load(op.join(op.dirname(__file__),'files/S_h_LISA_xcosmo.npz'))
 LISA_freq = LISA['x']
@@ -49,7 +49,7 @@ LISA_strain = LISA['y']
 ```
 and used in your own Python code.
 
-The folder `files/Responses/` contains the response function as a function of frequency in `.npy` format for the laser interferometers computed as described in Appendix A of the paper. Their content can be easily unpacked through a simple script, e.g for the LISA experiment
+The folder `files/Responses/` contains the response function as a function of frequency in `.npy` format for the laser interferometers computed as described in Appendix A of the paper. Their content can be easily unpacked through a simple script, e.g. for the LISA experiment
 ```python
 Resp_LISA = np.load(op.join(op.dirname(__file__),'files/Responses/Resp_LISA.npy'))
 freq_LISA = np.load(op.join(op.dirname(__file__),'files/Responses/f_R_LISA.npy'))
