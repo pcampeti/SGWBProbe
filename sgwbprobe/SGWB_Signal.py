@@ -60,8 +60,8 @@ class Signal_GW:
         self.r_star = r_star
         self.k_p = k_p
         self.sigma = sigma
-        self.tau_0 = 1.41745198407190182479E+04#1.41745e4
-        self.tau_eq = 420 #Mpc^-1
+        self.tau_0 = 15700
+        self.tau_eq = 560 #Mpc^-1
         self.h = 0.6736
         self.C = 2.99792458e8 #speed of light
         self.H0 = (self.h *1e5)/self.C #H0 in Mpc^-1 
